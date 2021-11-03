@@ -1,0 +1,6 @@
+# Project exclude paths
+/.gradle/
+/simple/build/
+/simple/build/intermediates/classes/debug/
+/takephoto_library/build/
+/takephoto_library/build/intermediates/classes/debug/
