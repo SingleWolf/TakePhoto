@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply from: "publishConfig.gradle"
+//apply from: "publish_maven.gradle"
 
 android {
     compileSdkVersion 27
@@ -16,10 +18,34 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    task generateSorceJar(type: Jar) {
+        archiveClassifier.set( 'sources')
+        from sourceSets.main.java.srcDirs
+    }
+
+    task javadoc(type: Javadoc) {
+        source = android.sourceSets.main.java.srcDirs
+        classpath += project.files(android.getBootClasspath().join(File.pathSeparator)) + configurations.compile
+    }
+
+    javadoc {
+        options {
+            encoding "UTF-8"
+            charSet 'UTF-8'
+            author true
+            version true
+            links "http://docs.oracle.com/javase/8/docs/api"
+        }
+    }
+
+
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //添加这个是为了能够让java doc可以认识androidx.annotation包下的class;如果不加这个，代码中有使用到了一些annotation下的内容，如@NonNull注解，则会报错，生成失败
+    api 'com.android.support:support-annotations:28.0.0'
     implementation 'com.soundcloud.android.crop:lib_crop:1.0.0'
     implementation 'com.darsh.multipleimageselect:multipleimageselect:1.0.5'
     implementation 'me.shaohui.advancedluban:library:1.3.2'

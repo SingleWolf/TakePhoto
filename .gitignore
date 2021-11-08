@@ -4,3 +4,7 @@
 /simple/build/intermediates/classes/debug/
 /takephoto_library/build/
 /takephoto_library/build/intermediates/classes/debug/
+/takephoto_library/publishConfig.gradle
+/gradle.properties
+/maven.properties
+/local.properties
