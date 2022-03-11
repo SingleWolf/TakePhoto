@@ -1,8 +1,7 @@
-## [TakePhoto](https://github.com/crazycodeboy/TakePhoto) 简介  
-`TakePhoto`是一款用于在Android设备上获取照片（拍照或从相册、文件中选择）、裁剪图片、压缩图片的开源工具库，目前最新版本[2.0.4](https://github.com/crazycodeboy/TakePhoto/)。  
-2.0以下版本及API说明，详见[TakePhoto1.0+](https://github.com/crazycodeboy/TakePhoto/blob/master/README%20-V1.0+.md)。  
+## [TakePhoto] 简介
+ 基于TakePhoto框架上修改，以提供给老旧项目使用
 
-**V2.0**    
+`TakePhoto`是一款用于在Android设备上获取照片（拍照或从相册、文件中选择）、裁剪图片、压缩图片的开源工具库
 
 - 支持通过相机拍照获取图片
 - 支持从相册选择图片
@@ -12,16 +11,7 @@
 - 支持对裁剪及压缩参数个性化配置  
 - 提供自带裁剪工具(可选)  
 - 支持智能选取及裁剪异常处理
-- 支持因拍照Activity被回收后的自动恢复   
-
-GitHub地址： [https://github.com/crazycodeboy/TakePhoto](https://github.com/crazycodeboy/TakePhoto)
-
-## 预览图  
-
-运行效果图：    
-
-![运行效果图](https://raw.githubusercontent.com/crazycodeboy/TakePhoto/master/Screenshots/%E9%A2%84%E8%A7%88%E5%9B%BE.jpg)
-
+- 支持因拍照Activity被回收后的自动恢复
 
 ## 如何使用   
 
@@ -64,7 +54,7 @@ void onPickFromGallery();
  */
 void onPickFromCapture(Uri outPutUri);
 ```
-以上三种方式均提供对应的裁剪API，详见：[裁剪图片](https://github.com/crazycodeboy/TakePhoto#裁剪图片)。    
+以上三种方式均提供对应的裁剪API。
 **注：**  
 由于不同Android Rom厂商对系统有不同程度的定制，有可能导致某种选择图片的方式不支持，所以为了提高`TakePhoto`的兼容性，当某种选的图片的方式不支持时，`TakePhoto`会自动切换成使用另一种选择图片的方式进行图片选择。      
 
@@ -173,9 +163,6 @@ getTakePhoto().onEnableCompress(compressConfig,true).onPickFromGallery();
 
 ## 兼容性
 
-### TakePhoto在深度兼容性方面的测试    
-![兼容性测试报告](https://raw.githubusercontent.com/crazycodeboy/TakePhoto/master/Screenshots/%E5%85%BC%E5%AE%B9%E6%80%A7%E6%B5%8B%E8%AF%95.jpg)
-
 ### 获取更高的兼容性    
 `TakePhot`o是基于Android官方标准API编写的，适配了目前市场上主流的Rom。如果你在使用过程中发现了适配问题，可以[提交Issues](https://github.com/crazycodeboy/TakePhoto/issues)。   
 1. 为适配部分手机拍照时会回收`Activity`，`TakePhoto`在`onSaveInstanceState`与 `onCreate`做了相应的恢复处理。  
@@ -196,23 +183,22 @@ eg:
 ```
 
 ## 在项目中使用    
-为方便大家使用，现已将TakePhoto V2.0.4发布到JCenter(如果你对如何将项目发布到JCenter感兴趣可以参考：《[教你轻松将Android library 发布到JCenter](http://blog.csdn.net/fengyuzhengfan/article/details/51407009))》  
-Gradle:  
+Gradle:
 
 ```groovy
-    compile 'com.jph.takephoto:takephoto_library:2.0.4'
+    implementation 'io.github.singlewolf:TakePhoto:1.0.0'
 ```
 
 Maven:  
 
 ```groovy
 <dependency>
-  <groupId>com.jph.takephoto</groupId>
-  <artifactId>takephoto_library</artifactId>
-  <version>2.0.4</version>
+  <groupId>io.github.singlewolf</groupId>
+  <artifactId>TakePhoto</artifactId>
+  <version>1.0.0</version>
   <type>pom</type>
 </dependency>
 ```  
 
-## 最后  
-如果你对[TakePhoto](https://github.com/crazycodeboy/TakePhoto)有更好的建议或想改造它，欢迎大家[Fork and Pull requests](https://github.com/crazycodeboy/TakePhoto)。  
+## 最后
+特殊原因，经过改造后适用于比较老旧的项目，新项目谨慎使用。
